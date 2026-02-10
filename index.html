@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Nana! ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Philosopher:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --genshin-gold: #d4af37;
+            --genshin-blue: #4a9eff;
+            --genshin-purple: #9d77d9;
+            --genshin-dark: #1a1a2e;
+            --genshin-light: #f5f0e8;
+        }
+
+        body {
+            font-family: 'Philosopher', sans-serif;
+            background: #1a1a2e;
+            color: var(--genshin-light);
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+        
+        /* Background character layer */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* ADD YOUR GENSHIN CHARACTER IMAGE HERE */
+            /* Example: background: url('razor.png') center center/cover no-repeat; */
+            background: linear-gradient(135deg, #1a1a2e 0%, #2d1b4e 50%, #1a1a2e 100%);
+            z-index: 0;
+        }
+        
+        /* Semi-transparent overlay to keep text readable */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.7) 0%, rgba(45, 27, 78, 0.6) 50%, rgba(26, 26, 46, 0.7) 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Animated starry background */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, var(--genshin-gold), transparent);
+            border-radius: 50%;
+            animation: float 8s infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-100px) rotate(720deg); opacity: 0; }
+        }
+
+        /* Main container */
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header section */
+        .header {
+            text-align: center;
+            padding: 3rem 0;
+            animation: fadeInDown 1.5s ease-out;
+        }
+
+        .genshin-ornament {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 2rem;
+            border: 3px solid var(--genshin-gold);
+            border-radius: 50%;
+            position: relative;
+            animation: rotate 10s linear infinite;
+        }
+
+        .genshin-ornament::before,
+        .genshin-ornament::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--genshin-gold);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        h1 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--genshin-gold), var(--genshin-blue), var(--genshin-purple), var(--genshin-gold));
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 5s ease infinite;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--genshin-gold);
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            animation: fadeIn 2s ease-out 0.5s both;
+        }
+
+        /* Main content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 4rem 0;
+            animation: fadeInUp 1.5s ease-out 0.8s both;
+        }
+
+        .card {
+            background: rgba(42, 39, 68, 0.7);
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--genshin-gold);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.4);
+        }
+
+        .image-container {
+            width: 100%;
+            height: 350px;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 3px solid var(--genshin-gold);
+            position: relative;
+            background: linear-gradient(135deg, rgba(74, 158, 255, 0.2), rgba(157, 119, 217, 0.2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .image-container:hover img {
+            transform: scale(1.1);
+        }
+
+        .placeholder-text {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.2rem;
+            color: var(--genshin-gold);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .card-title {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.8rem;
+            color: var(--genshin-gold);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        /* Message section */
+        .message-section {
+            background: rgba(42, 39, 68, 0.8);
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--genshin-purple);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 4rem 0;
+            text-align: center;
+            animation: fadeIn 2s ease-out 1.2s both;
+            position: relative;
+        }
+
+        .message-section::before,
+        .message-section::after {
+            content: '✦';
+            position: absolute;
+            font-size: 3rem;
+            color: var(--genshin-gold);
+            animation: pulse 2s infinite;
+        }
+
+        .message-section::before {
+            top: 2rem;
+            left: 2rem;
+        }
+
+        .message-section::after {
+            bottom: 2rem;
+            right: 2rem;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .message-text {
+            font-size: 1.3rem;
+            line-height: 2;
+            color: var(--genshin-light);
+            margin: 2rem 0;
+        }
+
+        /* Wishes button */
+        .wishes-button {
+            background: linear-gradient(135deg, var(--genshin-gold), var(--genshin-blue));
+            border: none;
+            color: white;
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.5rem;
+            padding: 1.5rem 3rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+            margin-top: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wishes-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .wishes-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .wishes-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.6);
+        }
+
+        /* Wishes overlay */
+        .wishes-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .wishes-overlay.active {
+            display: flex;
+        }
+
+        .wishes-content {
+            text-align: center;
+            position: relative;
+            max-width: 800px;
+            padding: 3rem;
+        }
+
+        .wish-animation {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3rem;
+            color: var(--genshin-gold);
+            margin: 2rem 0;
+            animation: wishAppear 2s ease-out;
+        }
+
+        @keyframes wishAppear {
+            0% { opacity: 0; transform: translateY(50px) scale(0.5); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .close-button {
+            background: var(--genshin-purple);
+            border: 2px solid var(--genshin-gold);
+            color: white;
+            font-family: 'Philosopher', sans-serif;
+            font-size: 1.2rem;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .close-button:hover {
+            background: var(--genshin-gold);
+            transform: scale(1.1);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .message-text {
+                font-size: 1.1rem;
+            }
+
+            .wishes-button {
+                font-size: 1.2rem;
+                padding: 1rem 2rem;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 3rem 0;
+            font-size: 0.9rem;
+            color: rgba(245, 240, 232, 0.6);
+            animation: fadeIn 2.5s ease-out 2s both;
+        }
+    </style>
+</head>
+<body>
+    <!-- Starry background -->
+    <div class="stars" id="stars"></div>
+    
+    <!-- Floating particles -->
+    <div id="particles"></div>
+
+    <!-- Main container -->
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="genshin-ornament"></div>
+            <h1>HAPPY BIRTHDAY</h1>
+            <div class="subtitle">NANA</div>
+        </div>
+
+        <!-- Main content -->
+        <div class="main-content">
+            <!-- Photo card -->
+            <div class="card">
+                <div class="image-container">
+                    <!-- Replace the src with your sister's photo -->
+                    <!-- <img src="path-to-nana-photo.png" alt="Nana"> -->
+                    <div class="placeholder-text">
+                        🌟 Add Nana's Photo Here 🌟
+                        <br><br>
+                        <small style="font-family: 'Philosopher', sans-serif; font-size: 0.8rem;">
+                            Replace this with: &lt;img src="your-image.png" alt="Nana"&gt;
+                        </small>
+                    </div>
+                </div>
+                <div class="card-title">The Birthday Star</div>
+            </div>
+
+            <!-- Cake card -->
+            <div class="card">
+                <div class="image-container">
+                    <!-- Replace the src with your cake photo -->
+                    <!-- <img src="path-to-cake-photo.png" alt="Birthday Cake"> -->
+                    <div class="placeholder-text">
+                        🎂 Add Cake Photo Here 🎂
+                        <br><br>
+                        <small style="font-family: 'Philosopher', sans-serif; font-size: 0.8rem;">
+                            Replace this with: &lt;img src="your-cake.png" alt="Cake"&gt;
+                        </small>
+                    </div>
+                </div>
+                <div class="card-title">Sweet Celebration</div>
+            </div>
+        </div>
+
+        <!-- Message section -->
+        <div class="message-section">
+            <h2 style="font-family: 'Cinzel Decorative', serif; font-size: 2.5rem; color: var(--genshin-gold); margin-bottom: 1.5rem;">
+                A Special Message
+            </h2>
+            <div class="message-text">
+                Dear Nana,<br>
+                On this special day, may your wishes come true just like finding a legendary 5-star character!<br>
+                May your life be filled with adventure, joy, and all the treasures your heart desires.<br>
+                Here's to another year of amazing quests and unforgettable memories!<br>
+                <br>
+                Happy Birthday! 🎉✨
+            </div>
+            <button class="wishes-button" onclick="showWishes()">
+                <span style="position: relative; z-index: 1;">Make a Wish ✨</span>
+            </button>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            Made with ❤️ for the most amazing sister • Inspired by Genshin Impact
+        </div>
+    </div>
+
+    <!-- Wishes overlay -->
+    <div class="wishes-overlay" id="wishesOverlay">
+        <div class="wishes-content">
+            <div class="genshin-ornament" style="margin: 0 auto 2rem;"></div>
+            <div class="wish-animation">
+                🌟 WISH GRANTED! 🌟
+            </div>
+            <div style="font-size: 1.5rem; color: var(--genshin-light); margin: 2rem 0; line-height: 1.8;">
+                May this year bring you:<br>
+                ✦ Endless happiness and adventure<br>
+                ✦ Success in all your endeavors<br>
+                ✦ Precious moments with loved ones<br>
+                ✦ Dreams that become reality<br>
+            </div>
+            <button class="close-button" onclick="closeWishes()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Create stars
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // Create floating particles
+        const particlesContainer = document.getElementById('particles');
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            particle.style.animationDelay = Math.random() * 5 + 's';
+            particlesContainer.appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 10000);
+        }
+
+        // Create particles periodically
+        setInterval(createParticle, 500);
+
+        // Wishes overlay functions
+        function showWishes() {
+            document.getElementById('wishesOverlay').classList.add('active');
+            
+            // Create wish particles
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.style.position = 'fixed';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                    particle.style.width = '12px';
+                    particle.style.height = '12px';
+                    document.body.appendChild(particle);
+                    
+                    setTimeout(() => particle.remove(), 6000);
+                }, i * 100);
+            }
+        }
+
+        function closeWishes() {
+            document.getElementById('wishesOverlay').classList.remove('active');
+        }
+    </script>
+</body>
+</html>
