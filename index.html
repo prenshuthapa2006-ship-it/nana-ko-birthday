@@ -37,9 +37,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* ADD YOUR GENSHIN CHARACTER IMAGE HERE */
-            /* Example: background: url('razor.png') center center/cover no-repeat; */
-            background: linear-gradient(135deg, #1a1a2e 0%, #2d1b4e 50%, #1a1a2e 100%);
+            background: url('gen.webp') center center/cover no-repeat;
             z-index: 0;
         }
         
@@ -447,6 +445,83 @@
                 font-size: 1.2rem;
                 padding: 1rem 2rem;
             }
+            
+            .genshin-ornament {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .card {
+                padding: 1.5rem;
+            }
+            
+            .image-container {
+                height: 300px;
+            }
+            
+            .message-section {
+                padding: 2rem 1.5rem;
+            }
+            
+            .message-section::before,
+            .message-section::after {
+                font-size: 2rem;
+            }
+            
+            .message-section::before {
+                top: 1rem;
+                left: 1rem;
+            }
+            
+            .message-section::after {
+                bottom: 1rem;
+                right: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+                letter-spacing: 0.05em;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            .header {
+                padding: 2rem 0;
+            }
+            
+            .card-title {
+                font-size: 1.4rem;
+            }
+            
+            .message-text {
+                font-size: 1rem;
+                line-height: 1.8;
+            }
+            
+            .wishes-button {
+                font-size: 1rem;
+                padding: 0.8rem 1.5rem;
+            }
+            
+            .wish-animation {
+                font-size: 2rem;
+            }
+            
+            .wishes-content {
+                padding: 2rem 1rem;
+            }
+            
+            .wishes-content > div:nth-child(3) {
+                font-size: 1.2rem;
+            }
         }
 
         /* Footer */
@@ -480,15 +555,7 @@
             <!-- Photo card -->
             <div class="card">
                 <div class="image-container">
-                    <!-- Replace the src with your sister's photo -->
-                    <!-- <img src="path-to-nana-photo.png" alt="Nana"> -->
-                    <div class="placeholder-text">
-                        🌟 Add Nana's Photo Here 🌟
-                        <br><br>
-                        <small style="font-family: 'Philosopher', sans-serif; font-size: 0.8rem;">
-                            Replace this with: &lt;img src="your-image.png" alt="Nana"&gt;
-                        </small>
-                    </div>
+                    <img src="nana.png" alt="Nana" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <div class="card-title">The Birthday Star</div>
             </div>
@@ -496,15 +563,7 @@
             <!-- Cake card -->
             <div class="card">
                 <div class="image-container">
-                    <!-- Replace the src with your cake photo -->
-                    <!-- <img src="path-to-cake-photo.png" alt="Birthday Cake"> -->
-                    <div class="placeholder-text">
-                        🎂 Add Cake Photo Here 🎂
-                        <br><br>
-                        <small style="font-family: 'Philosopher', sans-serif; font-size: 0.8rem;">
-                            Replace this with: &lt;img src="your-cake.png" alt="Cake"&gt;
-                        </small>
-                    </div>
+                    <img src="cake.jpeg" alt="Birthday Cake" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <div class="card-title">Sweet Celebration</div>
             </div>
